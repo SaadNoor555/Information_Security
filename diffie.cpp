@@ -21,7 +21,13 @@ ll pow_a_b(ll a, ll b, ll mod)
 
 int main()
 {
-    ll xa, ya, xb, yb, alfa= 3, ka, kb;
+    ll xa, ya, xb, yb, alfa= 3, ka, kb;     
+    /*  
+        xa, xb-> private keys for a, b
+        ya, yb-> public keys for a,b
+        ka, kb-> calculated secret key
+        alfa-> premitive root of the given prime number
+    */
     cout<< "Enter chosen private key for A: ";
     cin>> xa;
     cout<< "Enter chosen private key for B: ";
