@@ -56,12 +56,15 @@ string _hash(string input);
 
 int main()
 {
-    char *s;
-    cin>> s;
-    stringstream ss;
-    ss << s;
+    // char *s;
+    // cin>> s;
+    // stringstream ss;
+    // ss << s;
 
-    cout<< _hash(ss.str())<< '\n';
+    string s;
+    cin>> s;
+
+    cout<< _hash(s)<< '\n';
     return 0;
 }
 
@@ -81,7 +84,7 @@ ull** padding(const unsigned char* input, size_t &nBuffer)
 {
     size_t mLen = strlen((const char*) input);
     size_t kLen = (895-(mLen*8))%1024;
-    nBuffer = (mLen*8+kLen+129)/1024;
+    nBuffer = (mLen*8+1+kLen+128)/1024;
 
     ull** buffer= new ull*[nBuffer];
 
@@ -129,8 +132,8 @@ void round(ull** buffer, size_t nBuffer, ull* h)
 
         for(size_t j=0; j<80; j++)
         {
-            ull tmp1= s[7]+sig1(s[4])+Ch(s[4], s[5], s[6])+k[j]+w[j];
-            ull tmp2= sig0(s[0]) + Maj(s[0], s[1], s[2]);
+            ull tmp1= s[7]+Sig1(s[4])+Ch(s[4], s[5], s[6])+k[j]+w[j];
+            ull tmp2= Sig0(s[0]) + Maj(s[0], s[1], s[2]);
 
             s[7]= s[6];
             s[6]= s[5];
